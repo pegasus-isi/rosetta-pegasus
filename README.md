@@ -1,12 +1,12 @@
 # Rosetta Protein-folding workflow
 
-This is a Pegasus workflow for running Rosetta's De novo structure prediction on the Open Science Grid. Starting with an amino acid sequence, the workflow predicts the 3-dimensional structure of a protein using [Abinitio Relax](https://new.rosettacommons.org/docs/latest/application_documentation/structure_prediction/abinitio-relax#algorithm) algorithm. This workflow uses ideas from this [tutorial](https://www.rosettacommons.org/demos/latest/tutorials/denovo_structure_prediction/Denovo_structure_prediction).
+This is a Pegasus workflow for running Rosetta's De novo structure prediction on the Open Science Grid. The workflow predicts the 3-dimensional structure of a protein starting with an amino acid sequence, using the [Abinitio Relax](https://new.rosettacommons.org/docs/latest/application_documentation/structure_prediction/abinitio-relax#algorithm) algorithm. This workflow uses ideas from this [tutorial](https://www.rosettacommons.org/demos/latest/tutorials/denovo_structure_prediction/Denovo_structure_prediction).
 
-> Please run the workflow from your [OSG Connect](https://www.osgconnect.net) account. Anybody with a U.S. research affiliation can get access.
+> Please run the workflow from your [OSG Connect](https://www.osgconnect.net) account. Anyone with a U.S. research affiliation can get access.
 
 
 # Configure Input files
-You will need to have a license for downloading Rosetta. See the [Rosetta documentation](https://www.rosettacommons.org/demos/latest/tutorials/install_build/install_build) for details on how to obtain the license. Once you have the license, you can download the Rosetta software suite from https://www.rosettacommons.org/software/license-and-download.
+You will need to have a license to download Rosetta. See the [Rosetta documentation](https://www.rosettacommons.org/demos/latest/tutorials/install_build/install_build) for details on how to obtain the license. Once you have the license, you can download the Rosetta software suite from https://www.rosettacommons.org/software/license-and-download.
 
 Untar the downloaded file by running this command in your terminal:
 
@@ -14,7 +14,7 @@ Untar the downloaded file by running this command in your terminal:
 
 ## Binaries
 
-The ab initio executable can be found in ```rosetta*/main/source/bin```. Navigate to this directory and copy the AbinitioRelax file to the ```bin``` directory of the rosetta_workflow. Make sure the file name in the last line of proteinfold.sh matches with the one you copied. 
+The ab initio executable can be found in ```rosetta*/main/source/bin```. Navigate to this directory and copy the AbinitioRelax file to the ```bin``` directory of the rosetta_workflow. Make sure the file name in the last line of proteinfold.sh matches the one you copied. 
 
 ## Database
 The Pegasus workflow takes as input the database as a tarball file. Create the tar file of the database folder found in ```rosetta*/main``` and place it in the ```database``` directory of the workflow. 
@@ -42,12 +42,12 @@ Submit the workflow by executing ```proteinfolding.py```.
 
         $ ./proteinfolding.py
 
-You can use ```pegasus-status``` to check the status of the workflow and ```pegasus-statistics``` to display statistics when the workflow is done. 
+You can use ```pegasus-status``` to check the status of the workflow and ```pegasus-statistics``` to display statistics once the workflow completes. 
 
         $ pegasus-status [wfdir]
         $ pegasus-statistics [wfdir]
 
-Outputs will be staged to ```/home/$USER/workflows/output```
+Outputs will be automatically staged to ```/home/$USER/workflows/output```
 
 Want to try the workflow on many more inputs? Copy the 995 data inputs from the ```more-inputs/``` directory to the ```inputs/``` directory and re-run the script:
 
