@@ -19,6 +19,8 @@ The ab initio executable can be found in ```rosetta*/main/source/bin```. Navigat
 ## Database
 The Pegasus workflow takes as input the database as a tarball file. Create the tar file of the database folder found in ```rosetta*/main``` and place it in the ```database``` directory of the workflow. 
 
+```tar -czf [path to rosetta workflow]/database.tar.gz [path to rosetta*]/main/database```
+
 ## Data inputs
 A job in the rosetta workflow requires the following input files for an amino acid sequence:
 
@@ -30,9 +32,13 @@ A job in the rosetta workflow requires the following input files for an amino ac
 
 * Psipred secondary structure prediction psipred_ss2 file - Example: 1elwA.psipred_ss2
 
-Run the command on the folder containing the above input files for a sequence
+> **Note**: Rename the input files to have the same base name. 
+>               
+> Example: data-1.fasta, data-1.pdb, data-1.psipred_ss2, data-1-09_05.200_v1_3, data-1-03_05.200_v1_3 and the folder containing these input files as data-1.
 
-```tar -cf data-<i>.tar.gz <Folder name> ```
+Run the command on the folder ```data-<i>``` containing the above input files for a sequence
+
+```tar -cf data-<i>.tar.gz data-<i> ```
 
 A proteinfold job is created for each file in ```inputs/```. The workflow structure is a set of independent tasks executing ```bin/proteinfold.sh``` that takes the data tar file and database tar as input and produces a silent file as output.
 
