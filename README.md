@@ -19,7 +19,7 @@ The ab initio executable can be found in ```rosetta*/main/source/bin```. Navigat
 ## Database
 The Pegasus workflow takes as input the database as a tarball file. Create the tar file of the database folder found in ```rosetta*/main``` and place it in the ```database``` directory of the workflow. 
 
-```tar -czf [path to rosetta workflow]/database.tar.gz [path to rosetta*]/main/database```
+```cd [path to rosetta*]/main/ && tar -czf [path to rosetta workflow]/database.tar.gz database```
 
 ## Data inputs
 A job in the rosetta workflow requires the following input files for an amino acid sequence:
