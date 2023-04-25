@@ -42,6 +42,17 @@ Run the command on the folder ```data-<i>``` containing the above input files fo
 
 A proteinfold job is created for each file in ```inputs/```. The workflow structure is a set of independent tasks executing ```bin/proteinfold.sh``` that takes the data tar file and database tar as input and produces a silent file as output.
 
+Note that in the Transformation catalog section of the workflow, the clustering feature is enabled. This tells Pegasus to cluster multiple jobs together.
+
+        proteinfold = Transformation(
+                name="proteinfold",
+                site="local",
+                pfn=TOP_DIR / "bin/proteinfold.sh",
+                is_stageable="True",
+                arch=Arch.X86_64).add_pegasus_profile(clusters_size=10)
+
+To disable clustering, set ```clusters_size``` to 1. Experiment with different values for ```clusters_size``` and observe how it affects the time required for the jobs to finish.
+
 # Run the workflow
 
 Submit the workflow by executing ```proteinfolding.py```.
@@ -54,11 +65,6 @@ You can use ```pegasus-status``` to check the status of the workflow and ```pega
         $ pegasus-statistics [wfdir]
 
 Outputs will be automatically staged to ```/home/$USER/workflows/output```
-
-Want to try the workflow on many more inputs? Copy the 995 data inputs from the ```more-inputs/``` directory to the ```inputs/``` directory and re-run the script:
-
-        $ cp more-inputs/* inputs/
-        $ ./proteinfolding.py
 
 
 
