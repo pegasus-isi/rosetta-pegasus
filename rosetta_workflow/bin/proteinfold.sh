@@ -2,11 +2,9 @@
 
 set -e 
 
-inputs="$@"
-
 file=$1
 
-flags=$(echo $inputs | sed 's/data-\([0-9]\{1,4\}\) //g')
+shift
 
 tar -xf "$file.tar.gz"
 
@@ -18,8 +16,14 @@ rm -r "$file"
 
 chmod +x ./AbinitioRelax.static.linuxgccrelease
 
-tar -xzf database.tar.gz
+set +e
 
-rm database.tar.gz
+if [ ! -d database ]; then
+  tar -xzf database.tar.gz
+  rm database.tar.gz
+fi
 
-./AbinitioRelax.static.linuxgccrelease $flags
+set -e
+
+./AbinitioRelax.static.linuxgccrelease "$@"
+

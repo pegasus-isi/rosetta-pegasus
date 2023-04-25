@@ -43,8 +43,8 @@ local_shared_scratch = Directory(directory_type=Directory.SHARED_SCRATCH, path=W
 local_shared_scratch.add_file_servers(FileServer(url="file://" + str(WORK_DIR / "scratch"), operation_type=Operation.ALL))
 local_site.add_directories(local_shared_scratch)
 
-local_storage = Directory(directory_type=Directory.LOCAL_STORAGE, path=WORK_DIR / "output")
-local_storage.add_file_servers(FileServer(url="file://" + str(WORK_DIR / "output"), operation_type=Operation.ALL))
+local_storage = Directory(directory_type=Directory.LOCAL_STORAGE, path=WORK_DIR / "outputs")
+local_storage.add_file_servers(FileServer(url="file://" + str(WORK_DIR / "outputs"), operation_type=Operation.ALL))
 local_site.add_directories(local_storage)
 
 local_site.add_env(PATH=os.environ["PATH"])
@@ -68,7 +68,7 @@ condorpool_site.add_pegasus_profile(style="condor")
 condorpool_site.add_condor_profile(
     universe="vanilla",
     requirements='HAS_SINGULARITY == True && !regexp(GLIDEIN_Site, "SU-ITS|SDSC-PRP|Purdue Anvil")',
-    request_cpus=5,
+    request_cpus=3,
     request_memory="3 GB",
     request_disk="10000000",
 )
@@ -89,7 +89,7 @@ proteinfold = Transformation(
 	site="local",
 	pfn=TOP_DIR / "bin/proteinfold.sh",
 	is_stageable="True",
-	arch=Arch.X86_64).add_pegasus_profile(clusters_size=1)
+	arch=Arch.X86_64).add_pegasus_profile(clusters_size=10)
 
 tc = TransformationCatalog()
 tc.add_transformations(proteinfold)
