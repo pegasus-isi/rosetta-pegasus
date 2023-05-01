@@ -1,6 +1,6 @@
 # Rosetta Protein-folding workflow
 
-This is a Pegasus workflow for running Rosetta's De novo structure prediction on the Open Science Grid. The workflow predicts the 3-dimensional structure of a protein starting with an amino acid sequence, using the [Abinitio Relax](https://new.rosettacommons.org/docs/latest/application_documentation/structure_prediction/abinitio-relax#algorithm) algorithm. This workflow uses ideas from this [tutorial](https://www.rosettacommons.org/demos/latest/tutorials/denovo_structure_prediction/Denovo_structure_prediction).
+This is a Pegasus workflow for running Rosetta's De novo structure prediction on the OSG. The workflow predicts the 3-dimensional structure of a protein starting with an amino acid sequence, using the [Abinitio Relax](https://new.rosettacommons.org/docs/latest/application_documentation/structure_prediction/abinitio-relax#algorithm) algorithm. This workflow uses ideas from this [tutorial](https://www.rosettacommons.org/demos/latest/tutorials/denovo_structure_prediction/Denovo_structure_prediction).
 
 > Please run the workflow from your [OSG Connect](https://www.osgconnect.net) account. Anyone with a U.S. research affiliation can get access.
 
